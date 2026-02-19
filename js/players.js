@@ -235,3 +235,21 @@ function loadGameState() {
     }
     return false;
 }
+
+function restoreAvatarImages() {
+    players.forEach((player, index) => {
+        if (player.avatar) {
+            const avatarCard = document.getElementById(`avatar${index + 1}`);
+            if (avatarCard) {
+                let img = avatarCard.querySelector('img');
+                if (!img) {
+                    img = document.createElement('img');
+                    img.onerror = function() { this.style.display = 'none'; };
+                    avatarCard.appendChild(img);
+                }
+                img.style.display = '';
+                img.src = `${IMAGE_BASE_URL}${player.avatar}.png`;
+            }
+        }
+    });
+}

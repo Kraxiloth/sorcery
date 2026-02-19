@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorcery Life Counter</title>
-    <link rel="stylesheet" href="css/style.css?v=1.1.2">
+    <link rel="stylesheet" href="css/style.css?v=1.0.4">
 </head>
 <body>
 
@@ -13,10 +13,33 @@
 
     <!-- Global controls -->
     <div class="global-buttons">
-        <button class="settings-btn" onclick="openSettings()">&#9881;&#65039;</button>
+        <button class="settings-btn" onclick="openMenu()">&#9776;</button>
         <button class="settings-btn" onclick="openDice()">&#127922;</button>
         <button class="new-turn-btn" onclick="newTurn()">New Turn</button>
         <button class="reset-btn" onclick="resetGame()">Reset</button>
+    </div>
+
+    <!-- Menu modal -->
+    <div class="modal-overlay" id="menu-overlay" onclick="closeMenu()">
+        <div class="modal-content menu-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeMenu()">&#10005;</button>
+            <h3 class="browser-title">Menu</h3>
+            
+            <button class="menu-option" onclick="openSettings()">
+                <span class="menu-icon">&#9881;&#65039;</span>
+                <span class="menu-label">Settings</span>
+            </button>
+            
+            <button class="menu-option" onclick="openCodex()">
+                <span class="menu-icon">&#128214;</span>
+                <span class="menu-label">Codex</span>
+            </button>
+            
+            <button class="menu-option" onclick="openCardLookup()">
+                <span class="menu-icon">&#128269;</span>
+                <span class="menu-label">Card Lookup</span>
+            </button>
+        </div>
     </div>
 
     <!-- Settings modal -->
@@ -63,6 +86,47 @@
             <div class="settings-row">
                 <label>Countdown Duration (minutes)</label>
                 <input type="number" id="timer-duration" value="60" min="1" max="999" onchange="handleTimerDurationChange()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Codex modal -->
+    <div class="modal-overlay" id="codex-overlay" onclick="closeCodex()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCodex()">&#10005;</button>
+            <h3 class="browser-title">Codex</h3>
+            
+            <div class="browser-controls">
+                <input type="text" id="codex-search" placeholder="Search keywords (e.g., Ward, Charge)..."
+                    oninput="searchCodex()" onclick="event.stopPropagation()">
+            </div>
+            
+            <div id="codex-results" class="codex-results">
+                <div class="browser-loading">Enter a keyword to search</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Lookup modal -->
+    <div class="modal-overlay" id="card-lookup-overlay" onclick="closeCardLookup()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCardLookup()">&#10005;</button>
+            <h3 class="browser-title">Card Lookup</h3>
+            
+            <div class="browser-controls">
+                <input type="text" id="card-search" placeholder="Search cards..."
+                    oninput="searchCards()" onclick="event.stopPropagation()">
+            </div>
+            
+            <div id="card-results" class="avatar-list">
+                <div class="browser-loading">Enter a card name to search</div>
+            </div>
+            
+            <div id="card-detail" class="card-detail" style="display:none">
+                <img id="card-detail-image" src="" alt="Card">
+                <div id="card-detail-text"></div>
+                <div id="card-detail-faq"></div>
+                <button class="modal-cancel" onclick="backToCardList()">Back</button>
             </div>
         </div>
     </div>
@@ -134,36 +198,24 @@
     </div>
 
     <!-- Scripts loaded in dependency order -->
-    <script src="js/players.js?v=1.1.1"></script>
-    <script src="js/game.js?v=1.1.1"></script>
-    <script src="js/timer.js?v=1.1.1"></script>
-    <script src="js/avatars.js?v=1.1.1"></script>
-    <script src="js/dice.js?v=1.1.1"></script>
-    <script src="js/ui.js?v=1.1.1"></script>
+    <script src="js/players.js?v=1.0.4"></script>
+    <script src="js/game.js?v=1.0.4"></script>
+    <script src="js/timer.js?v=1.0.4"></script>
+    <script src="js/avatars.js?v=1.0.0"></script>
+    <script src="js/dice.js?v=1.0.0"></script>
+    <script src="js/codex.js?v=1.0.4"></script>
+    <script src="js/cards.js?v=1.0.4"></script>
+    <script src="js/ui.js?v=1.0.4"></script>
 
     <script>
         // Initialise the app
         const stateLoaded = loadGameState();
         renderPlayers();
         updateRemoveDropdown();
-
-        // Restore avatar images after rendering
+        
         if (stateLoaded) {
-            players.forEach((player, index) => {
-                if (player.avatar) {
-                    const avatarCard = document.getElementById(`avatar${index + 1}`);
-                    let img = avatarCard.querySelector('img');
-                    if (!img) {
-                        img = document.createElement('img');
-                        img.onerror = function() { this.style.display = 'none'; };
-                        avatarCard.appendChild(img);
-                    }
-                    img.style.display = '';
-                    img.src = `${IMAGE_BASE_URL}${player.avatar}.png`;
-                }
-            });
+            restoreAvatarImages();
         }
-        // Timer is now only started manually via play button
     </script>
 
 </body>

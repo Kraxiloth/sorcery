@@ -1,0 +1,102 @@
+[
+  {
+    "keyword": "Ward",
+    "definition": "When this minion is targeted by a spell or ability your opponent controls, counter that spell or ability unless its controller pays 1 mana.",
+    "tags": ["keyword", "protection"]
+  },
+  {
+    "keyword": "Charge",
+    "definition": "This minion can attack the turn it enters the battlefield.",
+    "tags": ["keyword", "speed"]
+  },
+  {
+    "keyword": "Flying",
+    "definition": "This minion can only be blocked by other minions with Flying or Reach.",
+    "tags": ["keyword", "evasion"]
+  },
+  {
+    "keyword": "Reach",
+    "definition": "This minion can block minions with Flying.",
+    "tags": ["keyword", "combat"]
+  },
+  {
+    "keyword": "Deadly",
+    "definition": "Any amount of damage dealt by this minion is enough to destroy a minion.",
+    "tags": ["keyword", "combat"]
+  },
+  {
+    "keyword": "Lifedrain",
+    "definition": "When this minion deals damage, you heal that much life.",
+    "tags": ["keyword", "life gain"]
+  },
+  {
+    "keyword": "Ambush",
+    "definition": "You may play this minion at instant speed.",
+    "tags": ["keyword", "timing"]
+  },
+  {
+    "keyword": "Aura",
+    "definition": "When this spell enters the battlefield, attach it to target minion or site. When the attached permanent leaves the battlefield, sacrifice this spell.",
+    "tags": ["keyword", "enchantment"]
+  },
+  {
+    "keyword": "Summon",
+    "definition": "When this spell enters the battlefield, create the listed token.",
+    "tags": ["keyword", "token"]
+  },
+  {
+    "keyword": "Threshold",
+    "definition": "Your threshold is the number of cards in your atlas (rubble pile). Many cards have threshold requirements - you must have at least that many rubble to play or activate them.",
+    "tags": ["rules", "atlas", "rubble"]
+  },
+  {
+    "keyword": "Mana",
+    "definition": "Mana is the resource used to pay for spells and abilities. At the start of your turn, your mana pool refills to match your maximum mana. You gain maximum mana by razing sites.",
+    "tags": ["rules", "resource"]
+  },
+  {
+    "keyword": "Sites",
+    "definition": "Sites are permanents that produce mana. When a site is razed (destroyed), it goes to your atlas (rubble pile) and permanently increases your maximum mana by 1.",
+    "tags": ["rules", "permanent", "mana"]
+  },
+  {
+    "keyword": "Mulligan",
+    "definition": "Before the game begins, each player may shuffle their hand into their deck and draw a new hand one time. This is called taking a mulligan.",
+    "tags": ["rules", "setup"]
+  },
+  {
+    "keyword": "Turn Structure",
+    "definition": "Each turn has four phases: 1) Dawn (untap, draw), 2) Main (play cards, activate abilities), 3) Combat (declare attackers and blockers), 4) Dusk (end of turn effects).",
+    "tags": ["rules", "phases"]
+  },
+  {
+    "keyword": "Combat",
+    "definition": "During combat, the active player declares attackers. The defending player then declares blockers. Damage is dealt simultaneously. Minions deal damage equal to their power.",
+    "tags": ["rules", "combat"]
+  },
+  {
+    "keyword": "Raze",
+    "definition": "When a site is razed (destroyed), move it to your atlas (rubble pile). This permanently increases your maximum mana by 1.",
+    "tags": ["keyword", "sites", "mana"]
+  },
+  {
+    "keyword": "Atlas",
+    "definition": "Your atlas is your rubble pile - the zone where razed sites go. The number of cards in your atlas is your threshold.",
+    "tags": ["rules", "zone", "threshold"]
+  },
+  {
+    "keyword": "Rubble",
+    "definition": "Rubble is another term for cards in your atlas. Each card in your atlas counts as 1 rubble toward your threshold.",
+    "tags": ["rules", "threshold"]
+  },
+  {
+    "keyword": "Bloodlust",
+    "definition": "This minion gets +1 power for each friendly minion that attacked this turn.",
+    "tags": ["keyword", "combat"]
+  },
+  {
+    "keyword": "Overwhelm",
+    "definition": "If this minion destroys a blocking minion, deal the excess damage to the defending player.",
+    "tags": ["keyword", "combat"]
+  }
+]

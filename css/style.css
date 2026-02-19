@@ -220,31 +220,6 @@ body {
     font-weight: bold;
 }
 
-.timer-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-}
-
-.timer-control {
-    background-color: var(--bg-button);
-    color: var(--text-primary);
-    border: none;
-    border-radius: var(--radius-sm);
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.timer-control:hover {
-    background-color: var(--bg-button-hover);
-}
-
 .player-avatar {
     grid-column: 2;
     grid-row: 1 / 3;
@@ -558,6 +533,157 @@ body {
     font-size: var(--button-font);
     color: var(--text-primary);
     text-align: center;
+}
+
+
+/* =============================================================================
+   MODAL - MENU
+   ============================================================================= */
+
+.menu-content {
+    gap: var(--space-md);
+}
+
+.menu-option {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0 var(--space-xl);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: var(--button-font);
+    box-sizing: border-box;
+}
+
+.menu-option:hover {
+    background-color: var(--bg-button);
+}
+
+.menu-icon {
+    font-size: 24px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-label {
+    flex: 1;
+    text-align: left;
+}
+
+
+/* =============================================================================
+   MODAL - CODEX
+   ============================================================================= */
+
+.codex-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.codex-entry {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.codex-keyword {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.codex-keyword:hover {
+    background-color: var(--bg-button);
+}
+
+.codex-definition {
+    padding: var(--space-lg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: none;
+}
+
+.codex-entry.expanded .codex-definition {
+    display: block;
+}
+
+.codex-entry.expanded .codex-keyword::after {
+    content: '▼';
+}
+
+.codex-keyword::after {
+    content: '▶';
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+
+/* =============================================================================
+   MODAL - CARD LOOKUP
+   ============================================================================= */
+
+.card-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.card-detail img {
+    max-width: 80vw;
+    max-height: 50vh;
+    border-radius: var(--radius-md);
+    object-fit: contain;
+}
+
+.card-detail-text {
+    width: 100%;
+    padding: var(--space-lg);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    line-height: 1.5;
+}
+
+.card-detail-faq {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.card-faq-item {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg);
+}
+
+.card-faq-question {
+    font-weight: bold;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+}
+
+.card-faq-answer {
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 

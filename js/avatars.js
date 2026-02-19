@@ -155,9 +155,9 @@ function backToList() {
 
 function confirmAvatar() {
     if (selectedAvatarSlug === null || currentAvatarPlayerIndex === null) return;
-
+    
     players[currentAvatarPlayerIndex].avatar = selectedAvatarSlug;
-
+    
     const avatarCard = document.getElementById(`avatar${currentAvatarPlayerIndex + 1}`);
     let img = avatarCard.querySelector('img');
     if (!img) {
@@ -172,6 +172,8 @@ function confirmAvatar() {
     }
     img.style.display = '';
     img.src = `${IMAGE_BASE_URL}${selectedAvatarSlug}.png`;
-
+    
+    saveGameState();  // ADD THIS LINE
+    
     closeModal();
 }

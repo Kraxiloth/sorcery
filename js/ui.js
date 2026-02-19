@@ -1,13 +1,52 @@
 // =============================================================================
+// UI - MENU MODAL
+// =============================================================================
+
+function openMenu() {
+    document.getElementById('menu-overlay').classList.add('active');
+}
+
+function closeMenu() {
+    document.getElementById('menu-overlay').classList.remove('active');
+}
+
+// =============================================================================
 // UI - SETTINGS MODAL
 // =============================================================================
 
 function openSettings() {
+    closeMenu();
     document.getElementById('settings-overlay').classList.add('active');
 }
 
 function closeSettings() {
     document.getElementById('settings-overlay').classList.remove('active');
+}
+
+// =============================================================================
+// UI - CODEX MODAL
+// =============================================================================
+
+function openCodex() {
+    closeMenu();
+    document.getElementById('codex-overlay').classList.add('active');
+}
+
+function closeCodex() {
+    document.getElementById('codex-overlay').classList.remove('active');
+}
+
+// =============================================================================
+// UI - CARD LOOKUP MODAL
+// =============================================================================
+
+function openCardLookup() {
+    closeMenu();
+    document.getElementById('card-lookup-overlay').classList.add('active');
+}
+
+function closeCardLookup() {
+    document.getElementById('card-lookup-overlay').classList.remove('active');
 }
 
 // =============================================================================
