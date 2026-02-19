@@ -1,0 +1,816 @@
+/* =============================================================================
+   DESIGN SYSTEM - CSS VARIABLES
+   ============================================================================= */
+
+:root {
+    /* Spacing scale */
+    --space-xs: 2px;
+    --space-sm: 4px;
+    --space-md: 8px;
+    --space-lg: 10px;
+    --space-xl: 20px;
+    
+    /* Component sizes */
+    --button-size: 48px;
+    --button-font: 18px;
+    --life-button-height: 56px;
+    --life-button-font: 28px;
+    --value-width: 80px;
+    --value-font: 48px;
+    --value-small-font: 20px;
+    --icon-size: 24px;
+    
+    /* Grid layout - calculated for content fit */
+    --avatar-width: 150px;
+    --grid-gap: 10px;
+    
+    /* Rounded values */
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    
+    /* Colors */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+    --bg-button: #333333;
+    --bg-button-hover: #555555;
+    --border-color: #444444;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --text-tertiary: #666666;
+    --color-green: #2c5f2e;
+    --color-green-hover: #3d7a40;
+    --color-red: #5f2c2c;
+    --color-red-hover: #7a3d3d;
+    --color-timer-expired: #ff6b6b;
+}
+
+/* Breakpoint: Narrow devices (Galaxy S8+, older phones) */
+@media (max-width: 360px) {
+    :root {
+        --space-md: 6px;
+        --space-lg: 8px;
+        --space-xl: 15px;
+        --button-size: 40px;
+        --button-font: 16px;
+        --life-button-font: 24px;
+        --value-width: 70px;
+        --value-small-font: 16px;
+        --icon-size: 20px;
+        --avatar-width: 130px;
+        --grid-gap: 8px;
+    }
+}
+
+/* Breakpoint: Short viewports */
+@media (max-height: 700px) {
+    :root {
+        --space-md: 6px;
+        --value-font: 32px;
+    }
+}
+
+
+/* =============================================================================
+   BASE
+   ============================================================================= */
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100svh;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+/* =============================================================================
+   GLOBAL BUTTONS
+   ============================================================================= */
+
+.global-buttons {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    justify-content: center;
+    padding: 0 var(--space-lg);
+    padding-bottom: env(safe-area-inset-bottom, var(--space-lg));
+    flex-shrink: 0;
+}
+
+.settings-btn {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    padding: 0;
+    border-radius: var(--radius-sm);
+    font-size: 20px;
+    cursor: pointer;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.new-turn-btn {
+    background-color: var(--color-green);
+    color: var(--text-primary);
+    border: none;
+    padding: 0 24px;
+    border-radius: var(--radius-sm);
+    font-size: var(--button-font);
+    cursor: pointer;
+    flex: 1;
+    max-width: 200px;
+    min-width: 100px;
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.new-turn-btn:hover {
+    background-color: var(--color-green-hover);
+}
+
+.reset-btn {
+    background-color: var(--color-red);
+    color: var(--text-primary);
+    border: none;
+    padding: 0 24px;
+    border-radius: var(--radius-sm);
+    font-size: var(--button-font);
+    cursor: pointer;
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reset-btn:hover {
+    background-color: var(--color-red-hover);
+}
+
+
+/* =============================================================================
+   PLAYER PANEL
+   ============================================================================= */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    gap: var(--space-xl);
+}
+
+.player {
+    background-color: var(--bg-secondary);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+    flex: 1 1 300px;
+    max-width: 360px;
+    display: grid;
+    grid-template-columns: 1fr var(--avatar-width);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
+    align-items: stretch;
+}
+
+.player-header-section {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.player-name {
+    margin: 0;
+    font-size: 20px;
+    cursor: pointer;
+    min-height: var(--button-size);
+    display: flex;
+    align-items: center;
+}
+
+.timer-display {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+.timer-expired {
+    color: var(--color-timer-expired);
+    font-weight: bold;
+}
+
+.timer-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.timer-control {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.timer-control:hover {
+    background-color: var(--bg-button-hover);
+}
+
+.player-avatar {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: flex-end;
+}
+
+.player-life {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.player-life .section {
+    margin: 0;
+}
+
+.player-mana {
+    grid-column: 1 / 3;
+}
+
+.player-threshold {
+    grid-column: 1 / 3;
+}
+
+.avatar-card {
+    width: 100%;
+    aspect-ratio: 5 / 7;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.avatar-initial {
+    font-size: 48px;
+    color: var(--text-tertiary);
+    font-weight: bold;
+    position: absolute;
+    z-index: 0;
+}
+
+.avatar-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+.section {
+    margin: var(--space-md) 0;
+    padding: var(--space-lg);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+.section h3 {
+    margin: 0 0 var(--space-md);
+    font-size: 16px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.value {
+    font-size: var(--value-font);
+    min-height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+    margin: var(--space-lg) 0;
+    min-width: var(--value-width);
+    width: var(--value-width);
+    text-align: center;
+}
+
+.value.small {
+    font-size: 18px;
+    min-height: unset;
+    margin: 0;
+    width: var(--button-size);
+    text-align: center;
+    line-height: normal;
+}
+
+.life-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.life-btn {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--life-button-font);
+    cursor: pointer;
+    width: var(--button-size);
+    min-height: var(--life-button-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.life-btn:hover {
+    background-color: var(--bg-button-hover);
+}
+
+
+/* =============================================================================
+   MANA ROW
+   ============================================================================= */
+
+.mana-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+}
+
+.mana-btn {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--button-font);
+    cursor: pointer;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.mana-btn:hover {
+    background-color: var(--bg-button-hover);
+}
+
+.value.mana-value {
+    font-size: 24px;
+    min-height: unset;
+    line-height: normal;
+    margin: 0;
+    min-width: var(--value-width);
+    width: var(--value-width);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   THRESHOLD INLINE
+   ============================================================================= */
+
+.threshold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+.threshold-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.threshold-btn {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--button-font);
+    cursor: pointer;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.threshold-btn:hover {
+    background-color: var(--bg-button-hover);
+}
+
+.threshold-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex: 1;
+    min-width: 0;
+}
+
+.threshold-display span {
+    min-width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: var(--value-small-font);
+}
+
+.element-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   MODAL - SHARED
+   ============================================================================= */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    overflow-x: hidden;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 90vw;
+    max-width: 400px;
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-sizing: border-box;
+}
+
+.modal-close {
+    position: fixed;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 50%;
+    width: var(--button-size);
+    height: var(--button-size);
+    font-size: var(--button-font);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-change {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: none;
+    padding: 0 24px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-change:hover {
+    background-color: var(--text-tertiary);
+}
+
+.modal-cancel {
+    background-color: var(--bg-button);
+    color: var(--text-secondary);
+    border: none;
+    padding: 0 var(--space-xl);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    cursor: pointer;
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browser-title {
+    margin: 0;
+    font-size: var(--button-font);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+
+/* =============================================================================
+   MODAL - AVATAR CARD VIEW
+   ============================================================================= */
+
+.modal-image {
+    max-width: calc(90vw - 40px);
+    max-height: 70vh;
+    aspect-ratio: 5 / 7;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+}
+
+#modal-view-card .modal-change {
+    margin-top: var(--space-xl);
+}
+
+
+/* =============================================================================
+   MODAL - AVATAR BROWSER
+   ============================================================================= */
+
+.browser-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+}
+
+#avatar-search {
+    width: 100%;
+    padding: 0 var(--space-lg);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 16px;
+    box-sizing: border-box;
+    height: var(--button-size);
+}
+
+#avatar-search::placeholder {
+    color: var(--text-tertiary);
+}
+
+.finish-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    min-height: var(--button-size);
+}
+
+.avatar-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.avatar-list-item {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0 14px;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text-primary);
+    text-align: left;
+    min-height: var(--button-size);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.avatar-list-item:hover {
+    background-color: #3a3a3a;
+    border-color: var(--text-tertiary);
+}
+
+.avatar-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+.avatar-preview img {
+    max-width: 60vw;
+    max-height: 50vh;
+    aspect-ratio: 5 / 7;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.browser-loading {
+    color: var(--text-tertiary);
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+
+/* =============================================================================
+   MODAL - SETTINGS
+   ============================================================================= */
+
+.settings-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.settings-row label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.settings-row select,
+.settings-row input[type="number"] {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0 var(--space-lg);
+    font-size: 16px;
+    width: 100%;
+    height: var(--button-size);
+    box-sizing: border-box;
+}
+
+
+/* =============================================================================
+   MODAL - DICE ROLLER
+   ============================================================================= */
+
+.dice-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+.dice-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg) 14px;
+    min-height: var(--button-size);
+}
+
+.dice-label {
+    font-size: var(--button-font);
+    font-weight: bold;
+    color: var(--text-primary);
+    width: 40px;
+}
+
+.dice-count-btn {
+    background-color: var(--bg-button);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 22px;
+    cursor: pointer;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dice-count-btn:hover {
+    background-color: var(--bg-button-hover);
+}
+
+.dice-count {
+    font-size: 22px;
+    font-weight: bold;
+    width: var(--button-size);
+    text-align: center;
+}
+
+.dice-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+#dice-results .new-turn-btn {
+    align-self: center;
+}
+
+.dice-result-row {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg) 14px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.dice-result-type {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dice-result-values {
+    font-size: var(--button-font);
+    color: var(--text-primary);
+}
+
+.dice-result-total {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.dice-grand-total {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--text-primary);
+    padding: var(--space-lg);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+
+/* =============================================================================
+   RESPONSIVE - SMALL WIDTH
+   ============================================================================= */
+
+@media (max-width: 600px) {
+    .section h3 {
+        font-size: 14px;
+    }
+
+    .value.small {
+        font-size: 16px;
+    }
+}
