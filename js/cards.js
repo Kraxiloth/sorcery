@@ -46,11 +46,24 @@ function searchCards() {
         }
         
         resultsContainer.innerHTML = matches.map(card => `
-            <div class="avatar-list-item" onclick='showCardDetail(${JSON.stringify(card.name)})'>
+            <div class="avatar-list-item" data-card-name="${card.name.replace(/"/g, '&quot;')}" onclick="showCardDetailByElement(this)">
                 ${card.name}
             </div>
         `).join('');
     }, 300); // Debounce search
+}
+
+function showCardDetailByElement(element) {
+    const cardName = element.getAttribute('data-card-name');
+    showCardDetail(cardName);
+}
+
+function handleCardSearchClick(event) {
+    event.stopPropagation();
+    // If detail view is showing, go back to list
+    if (document.getElementById('card-detail').style.display !== 'none') {
+        backToCardList();
+    }
 }
 
 function showCardDetail(cardName) {
