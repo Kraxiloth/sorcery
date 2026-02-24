@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorcery Hub | Tools for Sorcery: Contested Realm</title>
+  <meta name="description" content="Community tools, trackers, and utilities for Sorcery: Contested Realm players and collectors."/>
+  
+  <!-- Google Fonts: MedievalSharp for headings + system sans for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0f0e0e;
+      --card-bg: #1a1818;
+      --text: #f0e6d2;
+      --accent: #d4a017;
+      --accent-dark: #b8860b;
+      --border: #3a2f1e;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    header {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      background: linear-gradient(to bottom, #1a1818, var(--bg));
+      border-bottom: 1px solid var(--border);
+    }
+    
+    h1 {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 3.8rem;
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(212,160,23,0.4);
+      margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+      font-size: 1.4rem;
+      color: #c9b8a0;
+      max-width: 700px;
+      margin: 1rem auto;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(212,160,23,0.12);
+    }
+    
+    .card-header {
+      background: linear-gradient(to right, #2a1f0f, #3a2f1e);
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-dark);
+    }
+    
+    .card-header h3 {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1.9rem;
+      color: var(--accent);
+      margin: 0;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-body p {
+      margin-bottom: 1rem;
+      color: #d9d0c0;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #111;
+      padding: 0.8rem 1.6rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    
+    .btn:hover {
+      background: #e6b923;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #8a7a5f;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 600px) {
+      h1 { font-size: 2.8rem; }
+      .projects { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sorcery Hub</h1>
+    <p class="tagline">Practical tools & utilities for Sorcery: Contested Realm players, collectors, and the Contested Realm community</p>
+  </header>
+
+  <div class="container">
+    <section class="projects">
+      <div class="project-card">
+        <div class="card-header">
+          <h3>ResTracker</h3>
+        </div>
+        <div class="card-body">
+          <p>In-game resource tracker: mana pools, thresholds, life totals, turns & more. A proven community favorite for smooth play sessions.</p>
+          <a href="https://github.com/Kraxiloth/ResTracker" class="btn">View on GitHub</a>
+          <!-- Add live demo link if hosted -->
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-header">
+          <h3>CardScribe</h3>
+        </div>
+        <div class="card-body">
+          <p>Paste card lists → auto-parse, fetch TCGPlayer prices, generate polished Discord-ready selling/buying/trading posts in seconds.</p>
+          <a href="https://cardscribe.sorcery.no" class="btn">Try Live</a>
+          <a href="https://github.com/Kraxiloth/CardScribe" class="btn">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Add more cards as needed, e.g. future tools -->
+      <!-- <div class="project-card">...</div> -->
+    </section>
+  </div>
+
+  <footer>
+    <p>Built with passion for Sorcery: Contested Realm • Fan-made, not affiliated with Erik's Curiosa • © 2026 Kraxiloth</p>
+    <p><a href="https://github.com/Kraxiloth/Sorcery" style="color: var(--accent);">View source on GitHub</a></p>
+  </footer>
+
+</body>
+</html>
